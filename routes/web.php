@@ -16,16 +16,6 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', 'HomeController@index')
             ->name('home');
+        Route::get('/myposts', 'PostController@indexUser')->name('posts.indexUser');
         Route::resource('posts', 'PostController');
     });
-
-// Create una tabella UserInfos e aggiungete una relazione tra Posts e Users come fatto in classe
-// User one to one Userinfo
-// User one to many Post
-// Poi aggiungete i relativi seeder come fatto assieme e aggiornate la crud Post
-// Fatto questo dedicatevi alla parte frontend
-
-// aggiungete
-// model, migration, seeder di Category
-// Aggiungete relazione one to many con Post
-// Modificate create ed edit per inserire le select con le categorie

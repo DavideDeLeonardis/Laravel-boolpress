@@ -16,6 +16,8 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+                <a style="text-align: center" href="{{ route('admin.posts.index') }}">All Posts</a>
             </div>
         </div>
     </div>
