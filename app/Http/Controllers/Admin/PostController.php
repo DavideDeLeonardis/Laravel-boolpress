@@ -12,7 +12,7 @@ class PostController extends Controller
     protected $validationParams = [
         'title' => 'required|max:255',
         'content' => 'required',
-        'category_id' => 'exists:App\Model\Category,id'
+        // 'category_id' => 'exists:App\Model\Category,id'
     ];
 
 
@@ -49,8 +49,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        // $categories = Category::all();
-
         return view('admin.posts.create');
     }
 
@@ -112,7 +110,6 @@ class PostController extends Controller
     }
 
 
-    
     /**
      * Update the specified resource in storage.
      *
@@ -137,16 +134,16 @@ class PostController extends Controller
         if ($data['content'] != $post->content) {
             $post->content = $data['content'];
         }
-        if ($data['category_id'] != $post->category_id) {
-            $post->category_id = $data['category_id'];
-        }
+        // if ($data['category_id'] != $post->category_id) {
+        //     $post->category_id = $data['category_id'];
+        // }
 
         $post->update();
 
         return redirect()->route('admin.posts.show', $post);
     }
 
-    
+
     /**
      * Remove the specified resource from storage.
      *

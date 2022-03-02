@@ -17,7 +17,7 @@ class CreateUserInfosTable extends Migration
             $table->id();
             $table->string('phone');
             $table->string('address');
-            
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

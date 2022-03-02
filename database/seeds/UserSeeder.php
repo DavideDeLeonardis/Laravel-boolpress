@@ -1,10 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
-
-use App\User;
-use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
@@ -16,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(Faker $faker)
     {
         $newUser = new User();
-        $newUser->name = 'd';
+        $newUser->name = 'davide';
         $newUser->email = 'd@d.it';
         $string = 'dddddddd';
         $newUser->password = Hash::make($string);

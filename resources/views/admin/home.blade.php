@@ -14,10 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in!') }}<br>
+                    
+                    <a style="text-align: center" href="{{ route('admin.posts.index') }}">All Posts</a>
                 </div>
 
-                <a style="text-align: center" href="{{ route('admin.posts.index') }}">All Posts</a>
             </div>
         </div>
     </div>

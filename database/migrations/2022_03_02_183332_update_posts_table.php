@@ -19,7 +19,8 @@ class UpdatePostsTable extends Migration
                 ->nullable();
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')->onDelete('set null');
+                ->on('users')
+                ->onDelete('set null');
         });
     }
 

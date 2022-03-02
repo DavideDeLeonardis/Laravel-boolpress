@@ -16,6 +16,7 @@ class Post extends Model
         'updated_at',
     ];
 
+
     /**
      * Relationship with user
      *
@@ -26,15 +27,17 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
-    /**
-     * Relationship with category
-     *
-     * @return void
-     */
-    public function category()
-    {
-        return $this->belongsTo('App\Model\Category');
-    }
+
+    // /**
+    //  * Relationship with category
+    //  *
+    //  * @return void
+    //  */
+    // public function category()
+    // {
+        // return $this->belongsTo('App\Model\Category');
+    // }
+
 
     /**
      * Get the route key for the model.
@@ -45,6 +48,7 @@ class Post extends Model
     {
         return 'slug';
     }
+
 
     public function createSlug($title)
     {

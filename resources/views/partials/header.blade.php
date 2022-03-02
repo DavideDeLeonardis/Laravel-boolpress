@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav align-items-center">
                 @guest
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     @if (Route::has('register'))
@@ -17,6 +17,7 @@
                         @csrf
                         <input type="submit" class="btn btn-light" value="Logout">
                     </form>
+                    <span class="mx-3" style="color: white">{{ Auth::user()->name }}</span>
                 @endguest
             </div>
         </div>

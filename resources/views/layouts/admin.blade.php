@@ -32,15 +32,9 @@
                         <div class="position-sticky pt-3">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
-                                        href="{{ route('admin.posts.create') }}">
-                                        Add Post
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{ route('admin.home') }}">
                                         <i class="bi bi-house"></i>
-                                        Dashboard
+                                        Home
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -61,14 +55,21 @@
                                         All Categories
                                     </a>
                                 </li> --}}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page"
+                                        href="{{ route('admin.posts.create') }}">
+                                        Create Post
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
+
                     <div class="col">
                         @yield('content')
                     </div>
                 </div>
-
+            </div>
         </main>
     </div>
 </body>

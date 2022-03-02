@@ -9,17 +9,17 @@
                 </div>
             @endif
         </div>
+
         <div class="row">
             <div class="col">
-                <h1>
-                    {{ $post->title }}
-                </h1>
+                <h1>Title: {{ $post->title }}</h1>
+                {{-- <h2>Category: {{ $post->category()->first()->name }}</h2> --}}
+                <h3>Author: {{ $post->user()->first()->name }}</h3>
             </div>
         </div>
+
         <div class="row">
-            <div class="col">
-                {{ $post->content }}
-            </div>
+            <div class="col">Content: {{ $post->content }}</div>
         </div>
     </div>
 @endsection
