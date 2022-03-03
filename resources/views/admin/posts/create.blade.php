@@ -21,7 +21,7 @@
                 @csrf
                 @method('POST')
 
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                     <select class="form-select" name="category_id">
                         <option value="">Select a category</option>
                         @foreach ($categories as $category)
@@ -34,7 +34,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div> --}}
+                </div>
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>

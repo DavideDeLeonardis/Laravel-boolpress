@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Post;
+use App\Model\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ class PostController extends Controller
     protected $validationParams = [
         'title' => 'required|max:255',
         'content' => 'required',
-        // 'category_id' => 'exists:App\Model\Category,id'
+        'category_id' => 'exists:App\Model\Category,id'
     ];
 
 
@@ -38,7 +39,7 @@ class PostController extends Controller
     {
         $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('admin.posts.index', ['posts' => $posts]);
+        return view('admin.posts.index', compact('posts'));
     }
 
 
@@ -49,7 +50,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+
+        return view('admin.posts.create', compact('categories'));
     }
 
 
@@ -83,7 +86,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.posts.show', ['post' => $post]);
+        return view('admin.posts.show', compact('post'));
     }
 
 
@@ -99,11 +102,11 @@ class PostController extends Controller
             abort('403');
         }
 
-        // $categories = Category::all();
+        $categories = Category::all();
 
         $data = [
             'post' => $post,
-            // 'categories' => $categories
+            'categories' => $categories
         ];
 
         return view('admin.posts.edit', $data);
@@ -134,9 +137,9 @@ class PostController extends Controller
         if ($data['content'] != $post->content) {
             $post->content = $data['content'];
         }
-        // if ($data['category_id'] != $post->category_id) {
-        //     $post->category_id = $data['category_id'];
-        // }
+        if ($data['category_id'] != $post->category_id) {
+            $post->category_id = $data['category_id'];
+        }
 
         $post->update();
 

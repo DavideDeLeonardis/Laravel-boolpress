@@ -12,6 +12,7 @@ class Post extends Model
         'content',
         'slug',
         'user_id',
+        'category_id',
         'created_at',
         'updated_at',
     ];
@@ -28,15 +29,15 @@ class Post extends Model
     }
 
 
-    // /**
-    //  * Relationship with category
-    //  *
-    //  * @return void
-    //  */
-    // public function category()
-    // {
-        // return $this->belongsTo('App\Model\Category');
-    // }
+    /**
+     * Relationship with category
+     *
+     * @return void
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Model\Category');
+    }
 
 
     /**
