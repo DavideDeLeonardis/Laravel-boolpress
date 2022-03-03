@@ -40,11 +40,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, Post $post)
     {
         $category->delete();
 
-        Post::where('id', $category->id)->delete();
+        if ($category->delete()) {
+            Post::where('id', $category->id)->delete();
+        }
 
         return redirect()
             ->route('admin.categories.index')
