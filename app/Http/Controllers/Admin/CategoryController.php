@@ -44,10 +44,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        if ($category->delete()) {
-            Post::where('id', $category->id)->delete();
-        }
-
         return redirect()
             ->route('admin.categories.index')
             ->with('status', "Category $category->id deleted!");
