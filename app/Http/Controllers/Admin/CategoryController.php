@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\Category;
-use App\Model\Post;
-use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -40,13 +38,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category, Post $post)
+    public function destroy(Category $category)
     {
         $category->delete();
-
-        // if ($category->delete()) {
-        //     DB::table('posts')->where('id', $post->id)->delete();
-        // }
 
         return redirect()
             ->route('admin.categories.index')
