@@ -37,8 +37,20 @@
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->created_at }}</td>
                             <td>{{ $category->updated_at }}</td>
+
+                            {{-- button view --}}
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.categories.show', $category->slug) }}">View</a>
+                            </td>
+
+                            {{-- button delete --}}
+                            <td>
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
                             </td>
                         </tr>
                     @endforeach

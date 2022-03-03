@@ -32,7 +32,7 @@
                         <div class="position-sticky pt-3">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('admin.home') }}">
+                                    <a class="nav-link" href="{{ route('admin.home') }}">
                                         <i class="bi bi-house"></i>
                                         Home
                                     </a>
@@ -56,8 +56,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
-                                        href="{{ route('admin.posts.create') }}">
+                                    <a class="nav-link" href="{{ route('admin.posts.create') }}">
+                                        <i class="bi bi-files"></i>
                                         Create Post
                                     </a>
                                 </li>

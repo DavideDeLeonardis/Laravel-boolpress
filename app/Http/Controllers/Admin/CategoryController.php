@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\Category;
-use Illuminate\Http\Request;
+use App\Model\Post;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -33,14 +34,20 @@ class CategoryController extends Controller
     }
 
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        Post::where('id', $category->id)->delete();
+
+        return redirect()
+            ->route('admin.categories.index')
+            ->with('status', "Category $category->id deleted!");
+    }
 }
