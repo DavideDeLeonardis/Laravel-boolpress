@@ -41,6 +41,17 @@ class Post extends Model
 
 
     /**
+     * Relationship with tag
+     *
+     * @return void
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Model\Tag')->withTimestamps();
+    }
+
+
+    /**
      * Get the route key for the model.
      *
      * @return string
