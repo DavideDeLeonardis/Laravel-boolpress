@@ -169,8 +169,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // if (Auth::user()->id != $post->user_id && !Auth::user()->roles()->get()->contains(1)) {
-        if (Auth::user()->id != $post->user_id) {
+        if (Auth::user()->id != $post->user_id && !Auth::user()->roles()->get()->contains(1)) {
             abort('403');
         }
 
