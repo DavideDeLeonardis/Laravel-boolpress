@@ -15,14 +15,14 @@ class CreateUserInfosTable extends Migration
     {
         Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('phone');
-            $table->string('address');
-
+            
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
 
+            $table->string('phone');
+            $table->string('address');
             $table->timestamps();
         });
     }

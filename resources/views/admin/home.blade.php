@@ -15,8 +15,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}<br>
-                    
-                    <a style="text-align: center" href="{{ route('admin.posts.index') }}">All Posts</a>
+                    @if (Auth::user()->roles()->get()->contains('1'))
+                        <a style="text-align: center" href="{{ route('admin.posts.index') }}">All Posts</a><br>
+                        <a style="text-align: center" href="{{ route('admin.posts.indexUser') }}">My Posts</a>
+                    @else
+                        <a style="text-align: center" href="{{ route('admin.posts.indexUser') }}">My Posts</a>
+                    @endif
                 </div>
 
             </div>

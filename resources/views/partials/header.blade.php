@@ -17,9 +17,8 @@
                         @csrf
                         <input type="submit" class="btn btn-light" value="Logout">
                     </form>
-                    <span class="mx-3" style="color: white">{{ Auth::user()->name }}</span>
-                    <span class="mx-3" style="color: white">Role: {{ Auth::user()->roles()->first()->name }}</span>
-                    <span class="mx-3" style="color: white">Role ID: {{ Auth::user()->roles()->first()->pivot->role_id }}</span>
+                    <span class="mx-3 text-white">{{ Auth::user()->name }}</span>
+                    <span class="mx-3 text-white">Role: {{ Auth::user()->roles()->first()->name }}</span>
                 @endguest
             </div>
         </div>

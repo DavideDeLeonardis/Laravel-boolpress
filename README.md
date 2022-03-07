@@ -1,18 +1,2 @@
-1.
-creazione tabella post (migration+seeder+model)
-CRUD del post + rotta
-Installazione auth
-Fix delle rotte con middleware('auth')
-Fix dello scaffolding di HomeController, della sua index() e di RouteServiceProvider
-
-2.
-Creazione tabella userinfo (migration+seeder+model) e seeder di user
-Relazione 1aN tra post e user
-Relazione 1a1 tra user e userinfo
-Fix delle CRUD di post (tutte!) in modo che lo user veda/modifichi solo i suoi post
-
-3.
-Creazione tabella category (migration+seeder+model)
-Relazione 1aN tra post e category
-CategoryController (index+show)
-Fix delle CRUD di post (tutte!) in modo da aggiungere la categoria
+# If role == admin, vedi tutti i post compresi i tuoi e puoi modificarli tutti o cancellarli
+# If role == guest, vedi solo i tuoi post e puoi modificare o cancellare solo quelli

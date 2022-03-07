@@ -1,8 +1,5 @@
 <?php
 
-// If role == admin, vedi tutti i post, i tuoi post e puoi modificarli tutti o cancellarli
-// If role == guest, vedi i tuoi post e puoi modificare o cancellare solo quelli
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
