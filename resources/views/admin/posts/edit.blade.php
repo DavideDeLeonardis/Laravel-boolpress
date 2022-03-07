@@ -17,7 +17,7 @@
         </div>
 
         <div class="row">
-            <form action="{{ route('admin.posts.update', $post) }}" method="post">
+            <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -87,6 +87,21 @@
                         </div>
                     @enderror
                 </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input class="form-control" type="file" id="image" name="image">
+                    @error('image')
+                        <div class="alert alert-danger mt-3">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                @if (!empty($post->image))
+                    <div class="mb-3">
+                        <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                    </div>
+                @endif
 
                 <input class="btn btn-primary" type="submit" value="Save">
             </form>

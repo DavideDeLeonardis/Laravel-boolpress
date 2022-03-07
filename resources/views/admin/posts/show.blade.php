@@ -26,6 +26,9 @@
                     <span>{{ $tag->name }}</span>
                 @endforeach
             </div>
+            <div class="col">
+                <a class="btn btn-info" href="{{ route('admin.posts.edit', $post->slug) }}">Modify</a>
+            </div>
         </div>
 
         <div class="row">
@@ -36,7 +39,11 @@
 
         <div class="row">
             <div class="col">
-                <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                <img class="img-fluid"
+                    src="{{ !empty($post->image)
+                        ? asset('storage/' . $post->image)
+                        : $faker->imageUrl(640, 480, 'photo', true)}}"
+                    alt="{{ $post->title }}">
             </div>
         </div>
     </div>

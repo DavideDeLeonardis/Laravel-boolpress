@@ -17,7 +17,7 @@
         </div>
 
         <div class="row">
-            <form action="{{ route('admin.posts.store') }}" method="post">
+            <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
 
@@ -68,16 +68,6 @@
                     <label for="content" class="form-label">Content</label>
                     <textarea class="form-control" id="content" rows="3" name="content"> {{ old('content') }}</textarea>
                     @error('content')
-                        <div class="alert alert-danger mt-3">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="title" class="form-label">Created</label>
-                    <input type="date" class="form-control" id="created_at" name="created_at" value=" {{ old('created_at') }}">
-                    @error('created_at')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
                         </div>

@@ -9,14 +9,15 @@ use App\Model\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Faker\Generator as Faker;
 
 class PostController extends Controller
 {
     protected $validationParams = [
         'title' => 'required|max:240',
         'content' => 'required',
-        'category_id' => 'exists:App\Model\Category, id',
-        'tags.*' => 'nullable|exists:App\Model\Tag, id',
+        'category_id' => 'exists:App\Model\Category,id',
+        'tags.*' => 'nullable|exists:App\Model\Tag,id',
         'image' => 'nullable|image'
     ];
 
@@ -28,7 +29,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(20);
+        if (Auth::user()->roles()->get()->contains('1')) {
+            $posts = Post::orderBy('created_at', 'desc')->paginate(20);
+        } else {
+            $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20);
+        }
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -99,9 +104,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, Faker $faker)
     {
-        return view('admin.posts.show', compact('post'));
+        $data = [
+            'post' => $post,
+            'faker' => $faker
+        ];
+
+        return view('admin.posts.show', $data);
     }
 
 
@@ -113,7 +123,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if (Auth::user()->id != $post->user_id) {
+        if (Auth::user()->id != $post->user_id && !Auth::user()->roles()->get()->contains(1)) {
             abort('403');
         }
 
@@ -138,7 +148,7 @@ class PostController extends Controller
     {
         $data = $request->all();
 
-        if (Auth::user()->id != $post->user_id) {
+        if (Auth::user()->id != $post->user_id && !Auth::user()->roles()->get()->contains(1)) {
             abort('403');
         }
 
@@ -153,6 +163,11 @@ class PostController extends Controller
         }
         if ($data['category_id'] != $post->category_id) {
             $post->category_id = $data['category_id'];
+        }
+
+        if (!empty($data['image'])) {
+            Storage::delete($post->image);
+            $post->image = Storage::put('uploads', $data['image']);
         }
 
         $post->update();

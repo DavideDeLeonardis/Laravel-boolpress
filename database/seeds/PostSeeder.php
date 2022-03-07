@@ -18,11 +18,12 @@ class PostSeeder extends Seeder
     {
         for ($i = 0; $i < 100; $i++) {
             $newPost = new Post();
-            $newPost->title = $faker->sentence(3, true);
-            $newPost->content = $faker->paragraphs(5, true);
-            $newPost->slug = Str::slug("$newPost->title-$i", '-');
             $newPost->user_id = User::inRandomOrder()->first()->id;
             $newPost->category_id = Category::inRandomOrder()->first()->id;
+            $newPost->title = $faker->sentence(3, true);
+            $newPost->content = $faker->paragraphs(5, true);
+            $newPost->image = $faker->imageUrl(640, 480, 'photo', true);
+            $newPost->slug = Str::slug("$newPost->title-$i", '-');
 
             $newPost->save();
         }

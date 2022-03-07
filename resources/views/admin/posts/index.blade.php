@@ -22,8 +22,8 @@
                     <tr>
                         <th scope="col">Title</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Slug</th>
                         <th scope="col">Tags</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Created At</th>
                         <th colspan="3" scope="col">Actions</th>
                     </tr>
@@ -42,18 +42,14 @@
                             </td>
                             <td>{{ $post->slug }}</td>
                             <td>
-                                {{ Carbon\Carbon::parse($post->created_at)->englishDayOfWeek }}
                                 {{ Carbon\Carbon::parse($post->created_at)->day }}
                                 {{ Carbon\Carbon::parse($post->created_at)->englishMonth }}
-                                {{ Carbon\Carbon::parse($post->created_at)->year }}
+                                {{ Carbon\Carbon::parse($post->created_at)->year }},
+                                {{ Carbon\Carbon::parse($post->created_at)->format('H:i:s') }}
+
                             </td>
                             <td>
-                                {{ Carbon\Carbon::parse($post->updated_at)->englishDayOfWeek }}
-                                {{ Carbon\Carbon::parse($post->updated_at)->day }}
-                                {{ Carbon\Carbon::parse($post->updated_at)->englishMonth }}
-                                {{ Carbon\Carbon::parse($post->updated_at)->year }}
-                            </td>
-                            <td><a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
+                                <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
                             </td>
                             <td>
                                 <a class="btn btn-info" href="{{ route('admin.posts.edit', $post->slug) }}">Modify</a>
