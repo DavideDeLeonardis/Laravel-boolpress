@@ -30,7 +30,45 @@
                 </thead>
 
                 <tbody>
-                    @if (Auth::user()->roles()->get()->contains('1'))
+
+                    @foreach ($posts as $post)
+                        <tr>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $post->category->name }}</td>
+                            <td>
+                                @foreach ($post->tags()->get() as $tag)
+                                    {{ $tag->name }}
+                                @endforeach
+                            </td>
+                            <td>{{ $post->slug }}</td>
+                            <td>
+                                {{ Carbon\Carbon::parse($post->created_at)->englishDayOfWeek }}
+                                {{ Carbon\Carbon::parse($post->created_at)->day }}
+                                {{ Carbon\Carbon::parse($post->created_at)->englishMonth }}
+                                {{ Carbon\Carbon::parse($post->created_at)->year }}
+                            </td>
+                            <td>
+                                {{ Carbon\Carbon::parse($post->updated_at)->englishDayOfWeek }}
+                                {{ Carbon\Carbon::parse($post->updated_at)->day }}
+                                {{ Carbon\Carbon::parse($post->updated_at)->englishMonth }}
+                                {{ Carbon\Carbon::parse($post->updated_at)->year }}
+                            </td>
+                            <td><a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="{{ route('admin.posts.edit', $post->slug) }}">Modify</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    {{-- Per avere privilegi admin o editor --}}
+                    {{-- @if (Auth::user()->roles()->get()->contains('1'))
                         @foreach ($posts as $post)
                             <tr>
                                 <td>{{ $post->title }}</td>
@@ -43,19 +81,16 @@
                                 </td>
                                 <td>{{ $post->created_at }}</td>
 
-                                {{-- button view --}}
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
                                 </td>
 
-                                {{-- button modify --}}
                                 @if (Auth::user()->id === $post->user_id)
                                     <td>
                                         <a class="btn btn-info" href="{{ route('admin.posts.edit', $post->slug) }}">Modify</a>
                                     </td>
                                 @endif
 
-                                {{-- button delete --}}
                                 @if (Auth::user()->id === $post->user_id)
                                     <td>
                                         <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
@@ -81,19 +116,16 @@
                                 </td>
                                 <td>{{ $post->created_at }}</td>
 
-                                {{-- button view --}}
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
                                 </td>
 
-                                {{-- button modify --}}
                                 @if (Auth::user()->id === $post->user_id)
                                     <td>
                                         <a class="btn btn-info" href="{{ route('admin.posts.edit', $post->slug) }}">Modify</a>
                                     </td>
                                 @endif
 
-                                {{-- button delete --}}
                                 @if (Auth::user()->id === $post->user_id)
                                     <td>
                                         <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
@@ -106,7 +138,7 @@
                                 @endif
                             </tr>
                         @endforeach
-                    @endif
+                    @endif --}}
                 </tbody>
 
                 <tfoot>

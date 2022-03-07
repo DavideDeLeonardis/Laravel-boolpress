@@ -29,6 +29,7 @@ class CreatePostsTable extends Migration
                 ->onDelete('cascade');
             $table->string('title');
             $table->text('content');
+            $table->string('image')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
         });

@@ -74,6 +74,26 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="title" class="form-label">Created</label>
+                    <input type="date" class="form-control" id="created_at" name="created_at" value=" {{ old('created_at') }}">
+                    @error('created_at')
+                        <div class="alert alert-danger mt-3">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input class="form-control" type="file" id="image" name="image">
+                    @error('image')
+                        <div class="alert alert-danger mt-3">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
                 <input class="btn btn-primary" type="submit" value="Save">
             </form>
         </div>

@@ -8,14 +8,16 @@ use App\Model\Tag;
 use App\Model\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
     protected $validationParams = [
         'title' => 'required|max:240',
         'content' => 'required',
-        'category_id' => 'exists:App\Model\Category,id',
-        'tags.*' => 'nullable|exists:App\Model\Tag,id'
+        'category_id' => 'exists:App\Model\Category, id',
+        'tags.*' => 'nullable|exists:App\Model\Tag, id',
+        'image' => 'nullable|image'
     ];
 
 
@@ -73,6 +75,10 @@ class PostController extends Controller
         $data['user_id'] = Auth::user()->id;
 
         $request->validate($this->validationParams);
+
+        if (!empty($data['image'])) {
+            $data['image'] = Storage::put('uploads', $data['image']);
+        }
 
         $post = new Post();
         $post->fill($data);
