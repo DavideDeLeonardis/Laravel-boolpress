@@ -20,9 +20,9 @@
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Category</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Tags</th>
                         <th scope="col">Created At</th>
                         <th colspan="3" scope="col">Actions</th>
@@ -33,9 +33,9 @@
                     @if (Auth::user()->roles()->get()->contains('1'))
                         @foreach ($posts as $post)
                             <tr>
-                                <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->category_id }}</td>
+                                <td>{{ $post->slug }}</td>
                                 <td>
                                     @foreach ($post->tags()->get() as $tag)
                                         {{ $tag->name }}
