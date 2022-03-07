@@ -37,12 +37,14 @@
                                         Home
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.posts.index') }}">
-                                        <i class="bi bi-files"></i>
-                                        All Posts
-                                    </a>
-                                </li>
+                                @if (Auth::user()->roles()->get()->contains('1'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                                            <i class="bi bi-files"></i>
+                                            All Posts
+                                        </a>
+                                    </li>
+                                @endif
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.posts.indexUser') }}">
                                         <i class="bi bi-files"></i>

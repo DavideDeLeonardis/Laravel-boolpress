@@ -1,5 +1,8 @@
 <?php
 
+// If role == admin, vedi tutti i post, i tuoi post e puoi modificarli tutti o cancellarli
+// If role == guest, vedi i tuoi post e puoi modificare o cancellare solo quelli
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -35,7 +38,12 @@ class PostController extends Controller
             $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20);
         }
 
-        return view('admin.posts.index', compact('posts'));
+        $data = [
+            'posts' => $posts,
+            'postH1' => 'All Posts'
+        ];
+
+        return view('admin.posts.index', $data);
     }
 
 
@@ -46,9 +54,12 @@ class PostController extends Controller
      */
     public function indexUser()
     {
-        $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20);
+        $data = [
+            'posts' => Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20),
+            'postH1' => 'My Posts'
+        ];
 
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', $data);
     }
 
 
