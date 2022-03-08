@@ -19,61 +19,59 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('script')
 </head>
 
 <body>
-    <div id="app">
-        @include('partials.header')
+    @include('partials.header')
 
-        <main class="py-4">
-            <div class="container-fluid">
-                <div class="row">
-                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                        <div class="position-sticky pt-3">
-                            <ul class="nav flex-column">
+    <main class="py-4">
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.home') }}">
+                                    <i class="bi bi-house"></i>
+                                    Home
+                                </a>
+                            </li>
+                            @if (Auth::user()->roles()->get()->contains('1'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.home') }}">
-                                        <i class="bi bi-house"></i>
-                                        Home
-                                    </a>
-                                </li>
-                                @if (Auth::user()->roles()->get()->contains('1'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('admin.posts.index') }}">
-                                            <i class="bi bi-files"></i>
-                                            All Posts
-                                        </a>
-                                    </li>
-                                @endif
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.posts.indexUser') }}">
+                                    <a class="nav-link" href="{{ route('admin.posts.index') }}">
                                         <i class="bi bi-files"></i>
-                                        My Posts
+                                        All Posts
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.categories.index') }}">
-                                        <i class="bi bi-files"></i>
-                                        All Categories
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.posts.create') }}">
-                                        <i class="bi bi-files"></i>
-                                        Create Post
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-
-                    <div class="col">
-                        @yield('content')
+                            @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.indexUser') }}">
+                                    <i class="bi bi-files"></i>
+                                    My Posts
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                                    <i class="bi bi-files"></i>
+                                    All Categories
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.create') }}">
+                                    <i class="bi bi-files"></i>
+                                    Create Post
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+                </nav>
+                <div class="col">
+                    @yield('content')
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 </body>
 
 </html>

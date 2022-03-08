@@ -15,6 +15,7 @@
                 @else
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
+                        @method('POST')
                         <input type="submit" class="btn btn-light" value="Logout">
                     </form>
                     <span class="mx-3 text-white">{{ Auth::user()->name }}</span>

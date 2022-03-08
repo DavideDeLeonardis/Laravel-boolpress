@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\Post;
 
 class CategoryController extends Controller
 {
@@ -40,6 +41,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        // $post->tags()->detach();
+        // $category->posts();
+        // dd($category->posts()->tags());
+        $category->posts()->tags()->detach();
         $category->delete();
 
         return redirect()
