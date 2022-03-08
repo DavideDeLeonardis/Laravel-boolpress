@@ -40,9 +40,11 @@
         <div class="row">
             <div class="col">
                 <img class="img-fluid"
-                    src="{{ !empty($post->image)
-                        ? asset('storage/' . $post->image)
-                        : $faker->imageUrl(640, 480, 'photo', true)}}"
+                    src="
+                        {{ !empty($post->image)
+                            ? asset('storage/' . $post->image)
+                            : $faker->imageUrl(640, 480, 'photo', true)}}
+                    "
                     alt="{{ $post->title }}">
             </div>
         </div>

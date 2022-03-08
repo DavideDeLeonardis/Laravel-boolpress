@@ -3,10 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// Route::get('{any?}', function ($name = null) {
-//     return view('guest.welcome');
-// })->where('any', '.*');
-
 Auth::routes();
 
 Route::middleware('auth')
@@ -21,3 +17,7 @@ Route::middleware('auth')
         Route::resource('categories', 'CategoryController');
         Route::resource('posts', 'PostController');
     });
+
+Route::get('{any?}', function ($name = null) {
+    return view('guest.home');
+})->where('any', '.*');

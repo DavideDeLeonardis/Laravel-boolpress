@@ -41,27 +41,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        // $post->tags()->detach();
-        // $category->posts();
-        // dd($category->posts()->tags());
-        // $category->posts()->tags()->detach();
-        $posts = $category->posts();
-        // dd($posts);
-        // dd($category);
-//
-        // $posts->tags()->get()->detach();
-        // foreach ($posts->tags() as $post) {
-            // $post->detach();
-        // }
-        dd($posts->tags());
-
-
-
-
+        foreach ($category->posts as $post) {
+            $post->tags()->detach();
+        }
         $category->delete();
 
         return redirect()
             ->route('admin.categories.index')
-            ->with('status', "Category $category->id deleted!");
+            ->with('status', "Category $category->id with relative posts deleted!");
     }
 }
