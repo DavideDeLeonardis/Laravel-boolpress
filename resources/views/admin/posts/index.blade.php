@@ -24,7 +24,6 @@
                         <th scope="col">Title</th>
                         <th scope="col">Category</th>
                         <th scope="col">Tags</th>
-                        <th scope="col">Slug</th>
                         <th scope="col">Created At</th>
                         <th colspan="3" scope="col">Actions</th>
                     </tr>
@@ -41,7 +40,6 @@
                                     {{ $tag->name }}
                                 @endforeach
                             </td>
-                            <td>{{ $post->slug }}</td>
                             <td>
                                 {{ Carbon\Carbon::parse($post->created_at)->day }}
                                 {{ Carbon\Carbon::parse($post->created_at)->englishMonth }}
