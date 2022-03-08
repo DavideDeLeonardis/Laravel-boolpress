@@ -44,7 +44,14 @@ class CategoryController extends Controller
         // $post->tags()->detach();
         // $category->posts();
         // dd($category->posts()->tags());
-        $category->posts()->tags()->detach();
+        // $category->posts()->tags()->detach();
+        $posts = $category->posts();
+
+        // $posts->tags()->get()->detach();
+        foreach ($posts->tags() as $post) {
+            $post->detach();
+        }
+        // $post->tags()->detach();
         $category->delete();
 
         return redirect()
