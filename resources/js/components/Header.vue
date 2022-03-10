@@ -9,7 +9,7 @@
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
             >
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -19,9 +19,11 @@
                         :key="item.id"
                         class="nav-item"
                     >
-                        <a class="nav-link" :href="item.link">{{
-                            item.label
-                        }}</a>
+                        <router-link
+                            class="nav-link"
+                            :to="{ name: item.routeName }"
+                            >{{ item.label }}</router-link
+                        >
                     </li>
                 </ul>
             </div>
@@ -36,29 +38,20 @@ export default {
         return {
             menuItems: [
                 {
-                    label: "Item 1",
-                    link: "#",
-                    id: 1,
+                    label: "Home",
+                    routeName: "home",
                 },
                 {
-                    label: "Item 2",
-                    link: "#",
-                    id: 2,
+                    label: "Products",
+                    routeName: "products",
                 },
                 {
-                    label: "Item 3",
-                    link: "#",
-                    id: 3,
+                    label: "Chi Siamo",
+                    routeName: "about",
                 },
                 {
-                    label: "Item 4",
-                    link: "#",
-                    id: 4,
-                },
-                {
-                    label: "Item 5",
-                    link: "#",
-                    id: 5,
+                    label: "Contatti",
+                    routeName: "contacts",
                 },
             ],
         };

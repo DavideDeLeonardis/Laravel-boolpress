@@ -1,33 +1,11 @@
 <template>
     <div class="container">
-        <div class="row mt-3 bg-light">
-            <!-- component <ChangePage /> -->
-            <ul class="list-inline bg-light">
-                <li class="list-inline-item">
-                    <button
-                        v-if="prev_page_url"
-                        class="btn btn-primary text-white"
-                        @click="changePage('prev_page_url')"
-                    >
-                        Prev
-                    </button>
-                </li>
-                <li class="list-inline-item">
-                    <button
-                        v-if="next_page_url"
-                        class="btn btn-primary text-white"
-                        @click="changePage('next_page_url')"
-                    >
-                        Next
-                    </button>
-                </li>
-            </ul>
-        </div>
+        <ChangePage :cards="cards" @changePage="changePage($event)" />
 
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div
-                v-for="(post, index) in posts"
-                :key="index"
+                v-for="(post, index) in cards.posts"
+                :key="`posts${index}`"
                 class="col"
             >
                 <div class="card">
@@ -48,62 +26,24 @@
             </div>
         </div>
 
-        <div class="row mt-3 bg-light">
-            <!-- component <ChangePage /> -->
-            <ul class="list-inline bg-light">
-                <li class="list-inline-item">
-                    <button
-                        v-if="prev_page_url"
-                        class="btn btn-primary text-white"
-                        @click="changePage('prev_page_url')"
-                    >
-                        Prev
-                    </button>
-                </li>
-                <li class="list-inline-item">
-                    <button
-                        v-if="next_page_url"
-                        class="btn btn-primary text-white"
-                        @click="changePage('next_page_url')"
-                    >
-                        Next
-                    </button>
-                </li>
-            </ul>
-        </div>
+        <ChangePage :cards="cards" @changePage="changePage($event)"/>
     </div>
 </template>
 
 <script>
-import Axios from "axios";
+import ChangePage from "./ChangePage.vue";
 
 export default {
     name: "Main",
-    data() {
-        return {
-            posts: null,
-            next_page_url: null,
-            prev_page_url: null,
-        };
+    components: {
+        ChangePage,
     },
-    created() {
-        this.getPosts("http://127.0.0.1:8000/api/posts");
-    },
+    props: ["cards"],
     methods: {
-        changePage(vs) {
-            let url = this[vs];
-            if (url) {
-                this.getPosts(url);
-            }
+        changePage(varChangePage) {
+            this.$emit("changePage", varChangePage);
         },
-        getPosts(url) {
-            Axios.get(url).then((result) => {
-                this.posts = result.data.results.data;
-                this.next_page_url = result.data.results.next_page_url;
-                this.prev_page_url = result.data.results.prev_page_url;
-            });
-        },
-    },
+    }
 };
 </script>
 

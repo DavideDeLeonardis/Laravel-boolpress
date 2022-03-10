@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         return response()->json([
             'response' => true,
-            'results' =>  Post::orderBy('created_at', 'desc')->paginate(8)
+            'results' =>  Post::orderBy('created_at', 'desc')->paginate(6)
         ]);
     }
 }

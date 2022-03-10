@@ -1,9 +1,12 @@
 <template>
-    <div class="row mt-3 bg-light">
-        <ul class="list-inline bg-light">
+    <div
+        v-if="cards.prev_page_url || cards.next_page_url"
+        class="row mt-3"
+    >
+        <ul class="list-inline">
             <li class="list-inline-item">
                 <button
-                    v-if="prev_page_url"
+                    v-if="cards.prev_page_url"
                     class="btn btn-primary text-white"
                     @click="changePage('prev_page_url')"
                 >
@@ -12,7 +15,7 @@
             </li>
             <li class="list-inline-item">
                 <button
-                    v-if="next_page_url"
+                    v-if="cards.next_page_url"
                     class="btn btn-primary text-white"
                     @click="changePage('next_page_url')"
                 >
@@ -26,6 +29,12 @@
 <script>
 export default {
     name: "ChangePage",
+    props: ["cards"],
+    methods: {
+        changePage(varChangePage) {
+            this.$emit("changePage", varChangePage);
+        },
+    },
 };
 </script>
 
