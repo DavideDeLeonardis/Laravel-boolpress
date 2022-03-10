@@ -21,7 +21,7 @@ class PostController extends Controller
         return response()->json([
             'response' => true,
             'results' =>  [
-                'data' => Post::inRandomOrder()->limit(13)->get()
+                'data' => Post::inRandomOrder()->limit(15)->get()
             ]
         ]);
     }

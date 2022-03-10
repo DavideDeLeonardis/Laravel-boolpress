@@ -1,10 +1,14 @@
 <template>
-    <div>
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="card">
+    <div class="container">
+        <div v-if="post" class="row row-cols-1 row-cols-md-1 my-4">
+            <div class="card w-50 mx-auto">
                 <img
                     class="card-img-top"
-                    :src="'/storage/' + post.image"
+                    :src="
+                        post.image
+                            ? `/storage/${post.image}`
+                            : '/storage/uploads/default.png'
+                    "
                     :alt="post.title"
                 />
                 <div class="card-body">
@@ -28,22 +32,20 @@ export default {
         }
     },
     created() {
-        const url = "http://127.0.0.1:8001/api/v1/posts/" + this.id;
-        this.getPost(url);
+        this.getPost(`http://127.0.0.1:8000/api/v1/posts/${this.id}`);
     },
     methods: {
         getPost(url) {
             Axios
                 .get(url)
                 .then((result) => {
-                    console.log(result.data);
                     this.post = result.data.results.data;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
-    },
+    }
 };
 </script>
 

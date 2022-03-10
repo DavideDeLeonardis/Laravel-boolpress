@@ -5,14 +5,15 @@
                 <h1 class="my-3">Home</h1>
             </div>
         </div>
+        
         <Main :cards="cards" @changePage="changePage($event)" />
     </div>
 </template>
 
 <script>
-import Axios from "axios";
-
 import Main from "../components/Main.vue";
+
+import Axios from "axios";
 
 export default {
     name: "Home",
