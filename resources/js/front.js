@@ -4,8 +4,8 @@ window.Vue = require("vue");
 
 import App from "./views/App";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
-import Product from "./pages/Product";
+import Posts from "./pages/Posts";
+import Post from "./pages/Post";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 
@@ -21,15 +21,15 @@ const router = new VueRouter({
             component: Home,
         },
         {
-            path: "/products",
-            name: "products",
-            component: Products,
+            path: "/posts",
+            name: "posts",
+            component: Posts,
         },
         {
-            path: "/products/:id",
-            name: "product",
+            path: "/posts/:id",
+            name: "post",
             props: true,
-            component: Product,
+            component: Post,
         },
         {
             path: "/about",

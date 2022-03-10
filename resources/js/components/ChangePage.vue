@@ -33,8 +33,8 @@ export default {
     methods: {
         changePage(varChangePage) {
             this.$emit("changePage", varChangePage);
-        },
-    },
+        }
+    }
 };
 </script>
 

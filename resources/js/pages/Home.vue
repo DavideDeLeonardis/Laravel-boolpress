@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Home</h1>
+                <h1 class="my-3">Home</h1>
             </div>
         </div>
         <Main :cards="cards" @changePage="changePage($event)" />
@@ -25,11 +25,11 @@ export default {
                 posts: null,
                 prev_page_url: null,
                 next_page_url: null,
-            },
+            }
         };
     },
     created() {
-        this.getPosts("http://127.0.0.1:8000/api/v1/posts");
+        this.getPosts("http://127.0.0.1:8000/api/v1/posts/random");
     },
     methods: {
         changePage(varChangePage) {
@@ -38,7 +38,8 @@ export default {
             }
         },
         getPosts(url) {
-            Axios.get(url)
+            Axios
+                .get(url)
                 .then((result) => {
                     this.cards.posts = result.data.results.data;
                     this.cards.next_page_url = result.data.results.next_page_url;
@@ -47,8 +48,8 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-        },
-    },
+        }
+    }
 };
 </script>
 

@@ -42,8 +42,8 @@ export default {
                     routeName: "home",
                 },
                 {
-                    label: "Products",
-                    routeName: "products",
+                    label: "Posts",
+                    routeName: "posts",
                 },
                 {
                     label: "Chi Siamo",
