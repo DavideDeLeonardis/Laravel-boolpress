@@ -5,32 +5,38 @@
                 <h1 class="my-3">Home</h1>
             </div>
         </div>
-        
+
+        <!-- <Filters /> -->
+
         <Main :cards="cards" @changePage="changePage($event)" />
     </div>
 </template>
 
 <script>
-import Main from "../components/Main.vue";
-
 import Axios from "axios";
+
+import Main from "../components/Main.vue";
+// import Filters from "../components/Filters.vue";
+
 
 export default {
     name: "Home",
     components: {
         Main,
+        // Filters
     },
     data() {
         return {
+            url: "http://127.0.0.1:8000/api/v1/",
             cards: {
                 posts: null,
                 prev_page_url: null,
                 next_page_url: null,
             }
-        };
+        }
     },
     created() {
-        this.getPosts("http://127.0.0.1:8000/api/v1/posts/random");
+        this.getPosts(`${this.url}posts/random`);
     },
     methods: {
         changePage(varChangePage) {
@@ -39,8 +45,7 @@ export default {
             }
         },
         getPosts(url) {
-            Axios
-                .get(url)
+            Axios.get(url)
                 .then((result) => {
                     this.cards.posts = result.data.results.data;
                     this.cards.next_page_url = result.data.results.next_page_url;

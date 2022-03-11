@@ -15,8 +15,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li
-                        v-for="item in menuItems"
-                        :key="item.id"
+                        v-for="(item, index) in menuItems"
+                        :key="`item-${index}`"
                         class="nav-item"
                     >
                         <router-link
