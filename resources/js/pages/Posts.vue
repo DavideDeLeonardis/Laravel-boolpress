@@ -71,7 +71,8 @@
                                 class="btn btn-danger"
                                 type="button"
                                 value="Reset filters"
-                            /> <!-- finire reset filtri -->
+                                @click.prevent="resetFilters"
+                            />
                         </div>
                     </div>
                 </form>
@@ -80,7 +81,7 @@
 
         <!-- <Filters /> -->
 
-        <Loading v-if="loading"/>
+        <Loading v-if="loading" />
 
         <Main v-else :cards="cards" @changePage="changePage($event)" />
     </div>
@@ -132,8 +133,10 @@ export default {
             Axios.get(url)
                 .then((result) => {
                     this.cards.posts = result.data.results.data;
-                    this.cards.next_page_url = result.data.results.next_page_url;
-                    this.cards.prev_page_url = result.data.results.prev_page_url;
+                    this.cards.next_page_url =
+                        result.data.results.next_page_url;
+                    this.cards.prev_page_url =
+                        result.data.results.prev_page_url;
                     this.loading = false;
                 })
                 .catch((error) => {
@@ -141,20 +144,34 @@ export default {
                 });
         },
         searchPosts() {
-            Axios.get(`${this.url}posts/search`, {
-                params: this.form,
-            }).then((result) => {
-                this.cards.posts = result.data.results.data;
-                this.cards.next_page_url = result.data.results.next_page_url;
-                this.cards.prev_page_url = result.data.results.prev_page_url;
-            });
+            Axios.get(`${this.url}posts/search`, { params: this.form })
+                .then((result) => {
+                    this.cards.posts = result.data.results.data;
+                    this.cards.next_page_url =
+                        result.data.results.next_page_url;
+                    this.cards.prev_page_url =
+                        result.data.results.prev_page_url;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         },
         getTags() {
-            Axios.get(`${this.url}tags`).then((result) => {
-                this.tags = result.data.results.data;
-            });
+            Axios.get(`${this.url}tags`)
+                .then((result) => {
+                    this.tags = result.data.results.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        resetFilters() {
+            this.form.orderbycolumn = "title";
+            this.form.orderbysort = "desc";
+            this.form.tags = [];
+            this.getPosts(`${this.url}posts`);
         }
-    },
+    }
 };
 </script>
 
