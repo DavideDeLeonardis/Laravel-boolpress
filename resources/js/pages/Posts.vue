@@ -62,9 +62,9 @@
                     <div class="row">
                         <div class="col-2 d-flex">
                             <input
-                                class="btn btn-info me-2"
+                                class="btn btn-info me-3"
                                 type="button"
-                                value="Filtra"
+                                value="Filter"
                                 @click.prevent="searchPosts"
                             />
                             <input
@@ -79,8 +79,6 @@
             </div>
         </div>
 
-        <!-- <Filters /> -->
-
         <Loading v-if="loading" />
 
         <Main v-else :cards="cards" @changePage="changePage($event)" />
@@ -91,14 +89,12 @@
 import Axios from "axios";
 
 import Loading from "../components/Loading.vue";
-// import Filters from "../components/Filters.vue";
 import Main from "../components/Main.vue";
 
 export default {
     name: "Posts",
     components: {
         Loading,
-        // Filters
         Main,
     },
     data() {

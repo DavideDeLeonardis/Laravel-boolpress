@@ -6,8 +6,6 @@
             </div>
         </div>
 
-        <!-- <Filters /> -->
-
         <Loading v-if="loading"/>
 
         <Main :cards="cards" @changePage="changePage($event)" />
@@ -18,7 +16,6 @@
 import Axios from "axios";
 
 import Loading from "../components/Loading.vue";
-// import Filters from "../components/Filters.vue";
 import Main from "../components/Main.vue";
 
 
@@ -26,7 +23,6 @@ export default {
     name: "Home",
     components: {
         Loading,
-        // Filters
         Main,
     },
     data() {
