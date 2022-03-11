@@ -8,6 +8,11 @@ import Posts from "./pages/Posts";
 import Post from "./pages/Post";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
+import ErrorPage from "./pages/ErrorPage";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+library.add(faSpinner);
 
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
@@ -26,7 +31,7 @@ const router = new VueRouter({
             component: Posts,
         },
         {
-            path: "/posts/:id",
+            path: "/posts/:slug",
             name: "post",
             props: true,
             component: Post,
@@ -40,6 +45,11 @@ const router = new VueRouter({
             path: "/contacts",
             name: "contacts",
             component: Contacts,
+        },
+        {
+            path: "/404",
+            name: "error_page",
+            component: ErrorPage,
         },
     ],
 });

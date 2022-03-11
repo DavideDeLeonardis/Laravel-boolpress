@@ -2,7 +2,7 @@
     <div class="container">
         <ChangePage :cards="cards" @changePage="changePage($event)" />
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div v-if="cards" class="row row-cols-1 row-cols-md-3 g-4">
             <div
                 v-for="(post, index) in cards.posts"
                 :key="`post-${index}`"
@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text mb-4">{{ post.content }}</p>
-                        <div v-if="post.tags.length != 0">
+                        <div v-if="post.tags && post.tags.length != 0">
                             <h4>Tags</h4>
                             <ul
                                 v-for="(tag, index) in post.tags"
@@ -35,7 +35,7 @@
 
                     <router-link
                         class="btn btn-info"
-                        :to="{ name: 'post', params: { id: post.id } }"
+                        :to="{ name: 'post', params: { slug: post.slug } }"
                         >View</router-link
                     >
                 </div>

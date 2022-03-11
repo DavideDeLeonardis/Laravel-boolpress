@@ -79,23 +79,30 @@
         </div>
 
         <!-- <Filters /> -->
-        <Main :cards="cards" @changePage="changePage($event)" />
+
+        <Loading v-if="loading"/>
+
+        <Main v-else :cards="cards" @changePage="changePage($event)" />
     </div>
 </template>
 
 <script>
 import Axios from "axios";
-import Main from "../components/Main.vue";
+
+import Loading from "../components/Loading.vue";
 // import Filters from "../components/Filters.vue";
+import Main from "../components/Main.vue";
 
 export default {
     name: "Posts",
     components: {
-        Main,
+        Loading,
         // Filters
+        Main,
     },
     data() {
         return {
+            loading: false,
             url: "http://127.0.0.1:8000/api/v1/",
             tags: [],
             form: {
@@ -121,13 +128,13 @@ export default {
             }
         },
         getPosts(url) {
+            this.loading = true;
             Axios.get(url)
                 .then((result) => {
                     this.cards.posts = result.data.results.data;
-                    this.cards.next_page_url =
-                        result.data.results.next_page_url;
-                    this.cards.prev_page_url =
-                        result.data.results.prev_page_url;
+                    this.cards.next_page_url = result.data.results.next_page_url;
+                    this.cards.prev_page_url = result.data.results.prev_page_url;
+                    this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);

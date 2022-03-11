@@ -29,9 +29,9 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', '=', $slug)->first();
 
         return response()->json([
             'response' => true,
