@@ -1,30 +1,29 @@
-# Installazione
-### Lanciare da terminale:
+# Project setup
+### Run:
     composer install
     npm install
-    duplicare .env.example e rinominarlo .env (modificando i dati necessari)
     php artisan key:generate
+    php artisan storage:link
 
+### Duplicate .env.example e rename .env (modify some data as DB, API_KEY, ...)
 
-### Se si crea un nuovo db (PHPMyAdmin), lanciare da terminale
+### Posts' default img should be in /storage/app/public/uploads, take it from main folder, create uploads folder and move it there
+<br>
+
+### If a new db is created (PHPMyAdmin), run
     php artisan migrate
     php artisan db:seed
-<br>
 <br>
 
 -----------------------------
 
-## Accedere con credenziali ADMIN:
+## Access with ADMIN credentials:
     - Mail: admin@admin
     - Password: adadadad
 
-## Accedere con credenziali GUEST:
+## Access with GUEST credentials:
     - Mail: guest@guest
     - Password: adadadad
 
-## If role == admin, vedi tutti i post compresi i tuoi e puoi modificarli tutti o cancellarli
-## If role == guest, vedi solo i tuoi post e puoi modificare o cancellare solo quelli
-<br>
-<br>
-
-
+## If role == admin, you see all posts, included yours and you can modify or delete them all
+## If role == guest, you see only your posts and you can modify or delete only them
