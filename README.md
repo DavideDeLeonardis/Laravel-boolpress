@@ -5,7 +5,7 @@
     php artisan key:generate
     php artisan storage:link
 
-### Duplicate .env.example e rename .env (modify some data as DB, API_KEY, ...)
+### Duplicate .env.example e rename it in .env (modify only DB information and APP_URL if is needed)
 
 ### Posts' default img should be in /storage/app/public/uploads, take it from main folder, create uploads folder and move it there
 <br>
