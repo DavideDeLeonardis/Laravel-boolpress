@@ -1,4 +1,7 @@
 # laravel-boolpress
+
+## Fully functioning creation and managment posts' website (like Wordpress), possibility of multiple authentication and registration, multiple privileges, editable or deletable posts.
+
 ## Project setup
 ### Run:
     composer install
@@ -12,10 +15,6 @@
 ### If a new db is created (PHPMyAdmin), run
     php artisan migrate
     php artisan db:seed
-<br>
-
------------------------------
-## Fully functioning creation and managment posts' website (like Wordpress), possibility of multiple authentication and registration, multiple privileges, editable or deletable posts.
 <br>
 <br>
 
