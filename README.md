@@ -30,4 +30,4 @@
 ## If role == admin, you see all posts, included yours and you can modify or delete them all
 ## If role == guest, you see only your posts and you can modify or delete only them
 <br>
-<img src="./public/storage/img/boolpress.png">
+<img src="./boolpress-img.png">
