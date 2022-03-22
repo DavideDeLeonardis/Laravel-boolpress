@@ -32,7 +32,9 @@ class PostController extends Controller
         if (Auth::user()->roles()->get()->contains('1')) {
             $posts = Post::orderBy('created_at', 'desc')->paginate(20);
         } else {
-            $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20);
+            $posts = Post::where('user_id', Auth::user()->id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(20);
         }
 
         $data = [
