@@ -1,6 +1,6 @@
 # laravel-boolpress
 
-## Fully functioning creation and managment posts' website (like Wordpress), possibility of multiple authentication and registration, multiple privileges, editable or deletable posts.
+## Fully functioning creation and managment posts' website, possibility of multiple authentication and registration, multiple privileges, editable or deletable posts.
 
 ## Project setup
 ```
