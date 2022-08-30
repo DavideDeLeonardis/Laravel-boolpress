@@ -41,7 +41,7 @@ export default {
     },
     created() {
         this.getPost(
-            `http://limitless-basin-36680.herokuapp.com/api/v1/posts/${this.slug}`
+            `https://limitless-basin-36680.herokuapp.com/api/v1/posts/${this.slug}`
         );
     },
     methods: {

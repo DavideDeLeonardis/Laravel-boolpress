@@ -100,7 +100,7 @@ export default {
     data() {
         return {
             loading: false,
-            url: "http://limitless-basin-36680.herokuapp.com/api/v1/",
+            url: "https://limitless-basin-36680.herokuapp.com/api/v1/",
             tags: [],
             form: {
                 orderbycolumn: "title",

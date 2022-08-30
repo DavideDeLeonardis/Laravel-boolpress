@@ -100,7 +100,7 @@ export default {
             };
 
             const url =
-                "http://limitless-basin-36680.herokuapp.com/api/v1/contacts";
+                "https://limitless-basin-36680.herokuapp.com/api/v1/contacts";
 
             Axios.post(url, formData, { headers })
                 .then((result) => {
