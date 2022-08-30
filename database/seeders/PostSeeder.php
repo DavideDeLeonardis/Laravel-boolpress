@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Model\Post;
 use App\User;
 use App\Model\Category;
