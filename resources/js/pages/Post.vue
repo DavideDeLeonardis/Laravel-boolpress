@@ -7,7 +7,7 @@
                     :src="
                         post.image
                             ? `/storage/${post.image}`
-                            : '/storage/uploads/default.png'
+                            : '../../images/default.png'
                     "
                     :alt="post.title"
                 />
