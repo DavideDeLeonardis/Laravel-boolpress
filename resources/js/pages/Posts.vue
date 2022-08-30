@@ -100,7 +100,7 @@ export default {
     data() {
         return {
             loading: false,
-            url: "http://127.0.0.1:8000/api/v1/",
+            url: "http://limitless-basin-36680.herokuapp.com/api/v1/",
             tags: [],
             form: {
                 orderbycolumn: "title",
@@ -166,8 +166,8 @@ export default {
             this.form.orderbysort = "desc";
             this.form.tags = [];
             this.getPosts(`${this.url}posts`);
-        }
-    }
+        },
+    },
 };
 </script>
 

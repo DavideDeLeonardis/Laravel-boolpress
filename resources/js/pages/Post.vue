@@ -31,21 +31,24 @@ import ErrorPage from "../pages/ErrorPage.vue";
 export default {
     name: "Post",
     components: {
-        ErrorPage
+        ErrorPage,
     },
     props: ["slug"],
     data() {
         return {
             post: null,
-        }
+        };
     },
     created() {
-        this.getPost(`http://127.0.0.1:8000/api/v1/posts/${this.slug}`);
+        this.getPost(
+            `http://limitless-basin-36680.herokuapp.com/api/v1/posts/${this.slug}`
+        );
     },
     methods: {
         getPost(url) {
-            Axios
-                .get(url, {headers: {'Authorization': 'Bearer hvwiu56uvg64'}})
+            Axios.get(url, {
+                headers: { Authorization: "Bearer hvwiu56uvg64" },
+            })
                 .then((result) => {
                     this.post = result.data.results.data;
                 })
@@ -53,7 +56,7 @@ export default {
                     console.log(error);
                 });
         },
-    }
+    },
 };
 </script>
 

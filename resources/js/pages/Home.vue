@@ -6,7 +6,7 @@
             </div>
         </div>
 
-        <Loading v-if="loading"/>
+        <Loading v-if="loading" />
 
         <Main :cards="cards" @changePage="changePage($event)" />
     </div>
@@ -18,7 +18,6 @@ import Axios from "axios";
 import Loading from "../components/Loading.vue";
 import Main from "../components/Main.vue";
 
-
 export default {
     name: "Home",
     components: {
@@ -28,13 +27,13 @@ export default {
     data() {
         return {
             loading: false,
-            url: "http://127.0.0.1:8000/api/v1/",
+            url: "http://limitless-basin-36680.herokuapp.com/api/v1/",
             cards: {
                 posts: null,
                 prev_page_url: null,
                 next_page_url: null,
-            }
-        }
+            },
+        };
     },
     created() {
         this.getPosts(`${this.url}posts/random`);
@@ -50,15 +49,17 @@ export default {
             Axios.get(url)
                 .then((result) => {
                     this.cards.posts = result.data.results.data;
-                    this.cards.next_page_url = result.data.results.next_page_url;
-                    this.cards.prev_page_url = result.data.results.prev_page_url;
+                    this.cards.next_page_url =
+                        result.data.results.next_page_url;
+                    this.cards.prev_page_url =
+                        result.data.results.prev_page_url;
                     this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-        }
-    }
+        },
+    },
 };
 </script>
 
