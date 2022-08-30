@@ -6,7 +6,6 @@ import App from "./views/App";
 import Home from "./pages/Home";
 import Posts from "./pages/Posts";
 import Post from "./pages/Post";
-import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -35,11 +34,6 @@ const router = new VueRouter({
             name: "post",
             props: true,
             component: Post,
-        },
-        {
-            path: "/about",
-            name: "about",
-            component: About,
         },
         {
             path: "/contacts",

@@ -46,10 +46,6 @@ export default {
                     routeName: "posts",
                 },
                 {
-                    label: "Chi Siamo",
-                    routeName: "about",
-                },
-                {
                     label: "Contatti",
                     routeName: "contacts",
                 },

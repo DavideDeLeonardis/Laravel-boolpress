@@ -30,7 +30,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
@@ -49,6 +49,9 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.home') }}">Dashboard</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf

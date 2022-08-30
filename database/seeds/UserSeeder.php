@@ -17,14 +17,14 @@ class UserSeeder extends Seeder
         $newUser = new User();
         $newUser->name = 'admin';
         $newUser->email = 'admin@admin';
-        $newUser->password = Hash::make('adadadad');
+        $newUser->password = Hash::make('admin123');
 
         $newUser->save();
 
         $newUser = new User();
-        $newUser->name = 'guest';
-        $newUser->email = 'guest@guest';
-        $newUser->password = Hash::make('adadadad');
+        $newUser->name = 'editor';
+        $newUser->email = 'editor@editor';
+        $newUser->password = Hash::make('editor123');
 
         $newUser->save();
 
