@@ -10,11 +10,7 @@
             >
                 <div class="card">
                     <img
-                        :src="
-                            post.image
-                                ? `/storage/${post.image}`
-                                : '/storage/uploads/default.png'
-                        "
+                        src="../../images/default.png"
                         :alt="post.title"
                         class="card-img-top"
                     />

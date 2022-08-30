@@ -4,11 +4,7 @@
             <div class="card w-50 mx-auto">
                 <img
                     class="card-img-top"
-                    :src="
-                        post.image
-                            ? `/storage/${post.image}`
-                            : '../../images/default.png'
-                    "
+                    src="../../images/default.png"
                     :alt="post.title"
                 />
                 <div class="card-body">
