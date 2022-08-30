@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Any\HomeController;
+
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('guest.home');
-});
+Route::get('/', 'Guest\HomeController@index');
 
 Route::middleware('auth')
     ->namespace('Admin')
@@ -22,6 +22,4 @@ Route::middleware('auth')
         Route::resource('categories', 'CategoryController');
     });
 
-Route::get('{any?}', function () {
-    return view('guest.home');
-})->where('any', '.*');
+Route::get('/{any?}', [HomeController::class, 'index'])->where('any', '.*');

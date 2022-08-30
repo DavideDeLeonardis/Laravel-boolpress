@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Any;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        return view('guest.home');
     }
 }
