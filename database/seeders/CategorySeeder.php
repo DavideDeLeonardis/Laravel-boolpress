@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Model\Category;
 use Faker\Generator as Faker;
@@ -18,7 +20,7 @@ class CategorySeeder extends Seeder
             $newCategory = new Category();
             $newCategory->name = $faker->words(2, true);
             $newCategory->slug = Str::slug("$newCategory->name-$i", '-');
-            
+
             $newCategory->save();
         }
     }

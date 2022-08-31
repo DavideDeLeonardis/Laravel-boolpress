@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Model\Post;
 use App\Model\Tag;
@@ -14,7 +16,7 @@ class PostTagSeeder extends Seeder
     public function run()
     {
         $posts = Post::all();
-        
+
         foreach ($posts as $post) {
             $tags = Tag::inRandomOrder()->limit(3)->get();
             $post->tags()->attach($tags);
