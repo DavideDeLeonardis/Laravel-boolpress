@@ -13,9 +13,9 @@
                 </div>
             </div>
         </div>
-        <div v-else>
+        <!-- <div v-else>
             <ErrorPage />
-        </div>
+        </div> -->
     </div>
 </template>
 
