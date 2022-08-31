@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Any\HomeController;
 
-
 Auth::routes();
 
 Route::get('/', 'Guest\HomeController@index');
