@@ -29,11 +29,11 @@
                         </div>
                     </div>
 
-                    <!-- <router-link
+                    <router-link
                         class="btn btn-info"
                         :to="{ name: 'post', params: { slug: post.slug } }"
                         >View</router-link
-                    > -->
+                    >
                 </div>
             </div>
         </div>
