@@ -99,10 +99,10 @@ export default {
                 Authorization: "Bearer hvwiu56uvg64",
             };
 
-            const url =
-                "https://limitless-basin-36680.herokuapp.com/api/v1/contacts";
+            const url = "http://127.0.0.1:8000/api/v1/contacts";
 
-            Axios.post(url, formData, { headers })
+            Axios
+                .post(url, formData, { headers })
                 .then((result) => {
                     console.log(result.data, result.status);
                 })
