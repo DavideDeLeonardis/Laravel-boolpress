@@ -4,7 +4,11 @@
             <div class="card w-50 mx-auto">
                 <img
                     class="card-img-top"
-                    src="../../images/default.png"
+                    :src="
+                        post.image
+                            ? `/storage/${post.image}`
+                            : '/storage/uploads/default.png'
+                    "
                     :alt="post.title"
                 />
                 <div class="card-body">
@@ -13,9 +17,9 @@
                 </div>
             </div>
         </div>
-        <!-- <div v-else>
+        <div v-else>
             <ErrorPage />
-        </div> -->
+        </div>
     </div>
 </template>
 
@@ -27,24 +31,21 @@ import ErrorPage from "../pages/ErrorPage.vue";
 export default {
     name: "Post",
     components: {
-        ErrorPage,
+        ErrorPage
     },
     props: ["slug"],
     data() {
         return {
             post: null,
-        };
+        }
     },
     created() {
-        this.getPost(
-            `https://limitless-basin-36680.herokuapp.com/api/v1/posts/${this.slug}`
-        );
+        this.getPost(`http://127.0.0.1:8000/api/v1/posts/${this.slug}`);
     },
     methods: {
         getPost(url) {
-            Axios.get(url, {
-                headers: { Authorization: "Bearer hvwiu56uvg64" },
-            })
+            Axios
+                .get(url, {headers: {'Authorization': 'Bearer hvwiu56uvg64'}})
                 .then((result) => {
                     this.post = result.data.results.data;
                 })
@@ -52,7 +53,7 @@ export default {
                     console.log(error);
                 });
         },
-    },
+    }
 };
 </script>
 

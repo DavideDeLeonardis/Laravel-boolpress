@@ -10,7 +10,11 @@
             >
                 <div class="card">
                     <img
-                        src="../../images/default.png"
+                        :src="
+                            post.image
+                                ? `/storage/${post.image}`
+                                : '/storage/uploads/default.png'
+                        "
                         :alt="post.title"
                         class="card-img-top"
                     />
@@ -29,11 +33,11 @@
                         </div>
                     </div>
 
-                    <!-- <router-link
+                    <router-link
                         class="btn btn-info"
                         :to="{ name: 'post', params: { slug: post.slug } }"
                         >View</router-link
-                    > -->
+                    >
                 </div>
             </div>
         </div>
